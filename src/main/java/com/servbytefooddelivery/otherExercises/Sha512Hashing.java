@@ -31,9 +31,8 @@ public class Sha512Hashing {
             md.update(salt);
             byte[] bytes = md.digest(fullName.getBytes());
             StringBuilder sb = new StringBuilder();
-            for(int i=0; i< bytes.length ;i++)
-            {
-                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            for (byte aByte : bytes) {
+                sb.append(Integer.toString((aByte & 0xff) + 0x100, 16).substring(1));
             }
             encryptedName = sb.toString();
 
@@ -46,7 +45,7 @@ public class Sha512Hashing {
 
     public static void main(String[] args) throws NoSuchAlgorithmException {
 
-        Sha512Hashing.get_SHA_512_SecurePassword("John Travolta Emmanuel ");
+        Sha512Hashing.get_SHA_512_SecurePassword("John Travolta Emmanuel");
 
     }
 }
