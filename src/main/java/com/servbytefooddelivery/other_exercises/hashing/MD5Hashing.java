@@ -1,4 +1,4 @@
-package com.servbytefooddelivery.hashing;
+package com.servbytefooddelivery.other_exercises.hashing;
 
 import lombok.extern.slf4j.Slf4j;
 
