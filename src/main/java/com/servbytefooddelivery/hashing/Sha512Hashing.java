@@ -1,6 +1,5 @@
-package com.servbytefooddelivery.otherExercises;
+package com.servbytefooddelivery.hashing;
 
-import com.servbytefooddelivery.service.exception.ServbyteException;
 import lombok.extern.slf4j.Slf4j;
 
 import java.security.MessageDigest;
@@ -9,10 +8,8 @@ import java.security.SecureRandom;
 
 @Slf4j
 public class Sha512Hashing {
-    String passwordToHash = "password";
-    byte[] salt = getSalt();
 
-    public Sha512Hashing() throws NoSuchAlgorithmException {
+    public Sha512Hashing()  {
     }
 
     private static byte[] getSalt() throws NoSuchAlgorithmException {
