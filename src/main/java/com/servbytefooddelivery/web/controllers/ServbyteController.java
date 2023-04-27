@@ -16,20 +16,20 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/servbyte")
+@RequestMapping("/api/")
 public class ServbyteController {
 
     @Autowired
     ServbyteFoodDeliveryServiceImpl servbyteFoodDeliveryServiceImpl;
 
-    @PostMapping("/findServiceProviderByCity/{city}")
+    @PostMapping("findServiceProviderByCity/{city}")
     public ResponseEntity<?> findProviderByCity(@PathVariable String city) throws ServbyteException {
         List<ServiceProvider> serviceProviderList;
         serviceProviderList = servbyteFoodDeliveryServiceImpl.findServiceProviderByCity(city);
         return new ResponseEntity<>(serviceProviderList, HttpStatus.FOUND);
     }
 
-    @PostMapping("/showMenuOfSelectedProvider")
+    @PostMapping("showMenuOfSelectedProvider")
     public ResponseEntity<?> showMenu(SelectServiceProvider selectServiceProvider){
         Menu menu = servbyteFoodDeliveryServiceImpl.showMenuOfSelectedProvider(selectServiceProvider);
        return new ResponseEntity<>(menu, HttpStatus.OK);
