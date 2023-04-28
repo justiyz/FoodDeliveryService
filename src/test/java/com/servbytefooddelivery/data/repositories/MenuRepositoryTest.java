@@ -1,16 +1,16 @@
 package com.servbytefooddelivery.data.repositories;
 
-import com.servbytefooddelivery.data.models.Meal;
-import com.servbytefooddelivery.data.models.Menu;
+import com.servbytefooddelivery.data.models.meal.Meal;
+import com.servbytefooddelivery.data.models.meal.Menu;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class MenuRepositoryTest {
@@ -30,23 +30,23 @@ class MenuRepositoryTest {
 
         Meal meal1 = Meal.builder()
                 .description("long white rice + stew + chicken")
-                .preparationTimeInMinutes("10 minutes")
-                .pictureUrl("***###***")
-                .price(1000.0)
+                .preparationTimeInMinutes(10)
+                .imageUrl("***###***")
+                .price(BigDecimal.valueOf(1000.0))
                 .build();
 
         Meal meal2 = Meal.builder()
                 .description("pounded + white-soup + beef/stock fish")
-                .preparationTimeInMinutes("15")
-                .pictureUrl("---***---")
-                .price(1500.0)
+                .preparationTimeInMinutes(15)
+                .imageUrl("---***---")
+                .price(BigDecimal.valueOf(5000.0))
                 .build();
 
         Meal meal3 = Meal.builder()
                 .description("Beans + plaintain + fish")
-                .preparationTimeInMinutes("10")
-                .pictureUrl("---***---")
-                .price(1000.0)
+                .preparationTimeInMinutes(10)
+                .imageUrl("---***---")
+                .price(BigDecimal.valueOf(1000.0))
                 .build();
 
 

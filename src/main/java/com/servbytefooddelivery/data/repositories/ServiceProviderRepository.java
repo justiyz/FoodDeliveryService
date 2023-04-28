@@ -1,7 +1,7 @@
 package com.servbytefooddelivery.data.repositories;
 
-import com.servbytefooddelivery.data.models.City;
-import com.servbytefooddelivery.data.models.ServiceProvider;
+import com.servbytefooddelivery.data.models.address.City;
+import com.servbytefooddelivery.data.models.serviceProvider.ServiceProvider;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.servbytefooddelivery.dto;
 
-import com.servbytefooddelivery.data.models.Meal;
+import com.servbytefooddelivery.data.models.meal.Meal;
 import lombok.Data;
 
 @Data

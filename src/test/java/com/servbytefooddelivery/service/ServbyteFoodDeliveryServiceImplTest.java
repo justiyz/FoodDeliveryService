@@ -1,26 +1,25 @@
 package com.servbytefooddelivery.service;
 
-import com.servbytefooddelivery.data.models.City;
-import com.servbytefooddelivery.data.models.Meal;
-import com.servbytefooddelivery.data.models.Menu;
-import com.servbytefooddelivery.data.models.ServiceProvider;
+import com.servbytefooddelivery.data.models.address.City;
+import com.servbytefooddelivery.data.models.meal.Meal;
+import com.servbytefooddelivery.data.models.meal.Menu;
+import com.servbytefooddelivery.data.models.serviceProvider.ServiceProvider;
 import com.servbytefooddelivery.data.repositories.MealRepository;
 import com.servbytefooddelivery.data.repositories.MenuRepository;
 import com.servbytefooddelivery.data.repositories.ServiceProviderRepository;
 import com.servbytefooddelivery.dto.SelectServiceProvider;
 import com.servbytefooddelivery.service.exception.ServbyteException;
+import com.servbytefooddelivery.service.servebyte.ServbyteFoodDeliveryServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 
-import javax.transaction.Transactional;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class ServbyteFoodDeliveryServiceImplTest {
@@ -57,35 +56,35 @@ class ServbyteFoodDeliveryServiceImplTest {
         provider3.setCity(City.IBADAN);
         serviceProviderRepository.save(provider4);
 
-         ServiceProvider provider5 = new ServiceProvider();
+        ServiceProvider provider5 = new ServiceProvider();
         provider3.setCity(City.IBADAN);
         serviceProviderRepository.save(provider5);
 
-         ServiceProvider provider6 = new ServiceProvider();
+        ServiceProvider provider6 = new ServiceProvider();
         provider3.setCity(City.LAGOS);
         serviceProviderRepository.save(provider6);
 
-         ServiceProvider provider7 = new ServiceProvider();
+        ServiceProvider provider7 = new ServiceProvider();
         provider3.setCity(City.IBADAN);
         serviceProviderRepository.save(provider7);
 
-         ServiceProvider provider8 = new ServiceProvider();
+        ServiceProvider provider8 = new ServiceProvider();
         provider3.setCity(City.ASABA);
         serviceProviderRepository.save(provider8);
 
 
         Meal meal1 = Meal.builder()
                 .description("long white rice + stew + chicken")
-                .preparationTimeInMinutes("10 minutes")
-                .pictureUrl("***###***")
-                .price(1000.0)
+                .preparationTimeInMinutes(10)
+                .imageUrl("***###***")
+                .price(BigDecimal.valueOf(1000.0))
                 .build();
 
         Meal meal2 = Meal.builder()
                 .description("pounded + white-soup + beef/stock fish")
-                .preparationTimeInMinutes("15")
-                .pictureUrl("---***---")
-                .price(1500.0)
+                .preparationTimeInMinutes(15)
+                .imageUrl("---***---")
+                .price(BigDecimal.valueOf(5000.0))
                 .build();
 
         serviceProvider.setMenu(new Menu());
@@ -102,23 +101,23 @@ class ServbyteFoodDeliveryServiceImplTest {
     }
 
     @Test
-    void AddMealsToMenuTest(){
+    void AddMealsToMenuTest() {
         Menu menu = new Menu();
         List<Meal> meals = new ArrayList<>();
 
         Meal meal1 = Meal.builder()
                 .description("long white rice + stew + chicken")
-                .preparationTimeInMinutes("10 minutes")
-                .pictureUrl("***###***")
-                .price(1000.0)
+                .preparationTimeInMinutes(10)
+                .imageUrl("***###***")
+                .price(BigDecimal.valueOf(1000.0))
                 .build();
         meals.add(meal1);
 
         Meal meal2 = Meal.builder()
                 .description("pounded + white-soup + beef/stock fish")
-                .preparationTimeInMinutes("15")
-                .pictureUrl("---***---")
-                .price(1500.0)
+                .preparationTimeInMinutes(15)
+                .imageUrl("---***---")
+                .price(BigDecimal.valueOf(5000.0))
                 .build();
         meals.add(meal2);
         mealRepository.saveAll(meals);
@@ -142,17 +141,13 @@ class ServbyteFoodDeliveryServiceImplTest {
 
 
     @Test
-    void test_I_Can_View_Menu_Of_Selected_Restaurant(){
+    void test_I_Can_View_Menu_Of_Selected_Restaurant() {
         SelectServiceProvider selectServiceProvider = new SelectServiceProvider();
         selectServiceProvider.setServiceProvider(serviceProvider);
         Menu menu = servbyteFoodDeliveryServiceImpl.showMenuOfSelectedProvider(selectServiceProvider);
 
         assertThat(menu.getMeals().size()).isEqualTo(2);
     }
-
-
-
-
 
 
 }

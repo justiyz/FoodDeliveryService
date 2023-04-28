@@ -1,9 +1,8 @@
 package com.servbytefooddelivery.web.controllers;
 
-import com.servbytefooddelivery.data.models.City;
-import com.servbytefooddelivery.data.models.ServiceProvider;
-import com.servbytefooddelivery.service.ServbyteFoodDeliveryServiceImpl;
-import com.servbytefooddelivery.service.exception.ServbyteException;
+import com.servbytefooddelivery.data.models.address.City;
+import com.servbytefooddelivery.data.models.serviceProvider.ServiceProvider;
+import com.servbytefooddelivery.service.servebyte.ServbyteFoodDeliveryServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +10,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
